@@ -18,7 +18,7 @@ class ListProviderAppointmentsService {
     private appointmentsRepository: IAppointmentsRepository,
 
     @inject('CacheProvider')
-    private chacheProvider: IChacheProvider,
+    private cacheProvider: IChacheProvider,
   ) {}
 
   public async execute({
@@ -27,7 +27,7 @@ class ListProviderAppointmentsService {
     month,
     year,
   }: IRequest): Promise<Appointment[]> {
-    const cacheData = await this.chacheProvider.recover('asd');
+    const cacheData = await this.cacheProvider.recover('asd');
 
     console.log(cacheData);
     const appointments = await this.appointmentsRepository.findAllInDayProvider(
@@ -39,7 +39,7 @@ class ListProviderAppointmentsService {
       },
     );
 
-    await this.chacheProvider.save('asd', 'asd');
+    await this.cacheProvider.save('asd', 'asd');
 
     return appointments;
   }

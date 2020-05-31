@@ -8,7 +8,7 @@ const sessionController = new SessionController();
 sessionsRouter.post(
   '/',
   celebrate({
-    [Segments.PARAMS]: {
+    [Segments.BODY]: {
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     },
